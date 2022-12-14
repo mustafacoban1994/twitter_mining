@@ -29,9 +29,14 @@ from matplotlib import pyplot as plt
 from nltk.corpus import stopwords
 from textblob import Word, TextBlob
 from wordcloud import WordCloud
+from nltk.sentiment import SentimentIntensityAnalyzer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score, GridSearchCV, cross_validate
+from sklearn.preprocessing import LabelEncoder
 
 liste = []
-maxTweets = 5000
+maxTweets = 2000
 
 
 def anyOfWords(keyword=''):
@@ -52,7 +57,7 @@ def anyOfWords(keyword=''):
 
 
 anyOfWords(
-    '(göçmen OR göç OR suriyeli OR mülteci)')
+    '(#göçmen OR #göç OR #suriyeli OR #mülteci OR #afganli OR #afganlı OR #düzensizgöç OR #ümitözdağ OR #umitozdag OR #ümitozdag OR #zaferpartisi OR #uygur OR #doguturkistan OR #pakistanlı OR #pakistanli)')
 df = pd.DataFrame(liste,
                   columns=['Tarih/Zaman', 'KullanıcıAdı', 'İçerik', 'Url', 'Hashtag', 'BeğeniSayısı', 'PaylaşımSayısı'])
 df_=df.copy()
@@ -94,6 +99,7 @@ import nltk
 nltk.download('stopwords')
 sw = stopwords.words('turkish')
 sw  # bütün anlamsız kelimeleri görebiliriz.
+abc='bir'
 
 # Şimdi gelelim bunları çıkarmak. Pythonic yolu döngü yazmak, pandasla apply kullansakta aynı şeyi yaparız galdaş:)
 # satırları boşluklarına göre split edip hepsinin içinde gezinirim. eğer varsa yoksa diye bakacağım.
@@ -101,7 +107,7 @@ sw  # bütün anlamsız kelimeleri görebiliriz.
 # lambda ile split etsin. Stop wordsde olmayanları seçelim olanlara dokunmayalım sonra joinleyelim.
 
 df['İçerik'] = df['İçerik'].apply(lambda x: " ".join(x for x in str(x).split() if x not in sw))  # müthiş bir şey oldu
-
+df['İçerik'] = df['İçerik'].apply(lambda x: " ".join(x for x in str(x).split() if x not in abc))
 # Rarewords yani nadir olanları çıkarmak isteyebilirim.
 df['İçerik']
 # geçici bir dataframe oluştururum.
@@ -130,6 +136,7 @@ df['İçerik']
 
 for i in df['İçerik']:
     print(analyzer.lemmatize(i))
+df['İçerik'] = df['İçerik'].apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
 
 # 2. Text Visualization
 
@@ -139,18 +146,26 @@ tf = df["İçerik"].apply(lambda x: pd.value_counts(x.split(" "))).sum(axis=0).r
 tf.columns = ["Kelime", "tf"]
 tf.sort_values("tf", ascending=False)
 
+df.sort_values(by='BeğeniSayısı',ascending=False)
+df
 # Barplot
 
-tf[tf["tf"] > 200].plot.bar(x="Kelime", y="tf")
+tf[tf["tf"] > 100].plot.bar(x="Kelime", y="tf")
+from pylab import rcParams
+rcParams['figure.figsize'] = 20, 10
 plt.show()
 
-# Wordcloud
 
+
+# Wordcloud
+print(plt.rcParams)
+print(plt.rcParams.get('figure.figsize'))
 text = " ".join(i for i in df['İçerik'])
 
 wordcloud = WordCloud().generate(text)
 plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
+plt.rcParams['figure.figsize'] = [100, 5]
 plt.show()
 
 wordcloud = WordCloud(max_font_size=50,
@@ -158,25 +173,20 @@ wordcloud = WordCloud(max_font_size=50,
                       background_color="white").generate(text)
 plt.figure()
 plt.imshow(wordcloud, interpolation="bilinear")
+plt.rcParams['figure.figsize'] = [20, 10]
 plt.axis("off")
 plt.show()
 
 wordcloud.to_file("wordcloud.png")
 
 
-import snscrape.modules.twitter as twitter
 
-maxTweets = 100
-for i,tweet in enumerate(twitter.TwitterSearchScraper(' geocode:39.93,32.82,10km since:2022-11-30 until:2022-12-01').get_items()):
-        if i > maxTweets : break
-        print(tweet.username)
-        print(tweet.date)
-        print(tweet.content)
-        print("\n")
+#3-Sentiment Analysis
 
+df["İçerik"].head()
+nltk.download('vader_lexicon')
 
+sia = SentimentIntensityAnalyzer()
+sia.polarity_scores("The film was awesome")
 
-from stop_words import get_stop_words
-
-stop_words = get_stop_words('tr')
-stop_words = get_stop_words('turkish')
+df.sort_values(by='Hashtag',ascending=False)
