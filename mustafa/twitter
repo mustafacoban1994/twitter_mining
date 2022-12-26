@@ -8,16 +8,16 @@ import pandas as pd
 
 driver_path = "C:\works\Twitter\twitter\chromedriver.exe"
 driver = webdriver.Chrome(driver_path)
-driver.get("https://twitter.com/search?q=ümitözdağ&src=typed_query&f=top")
+driver.get("https://twitter.com/search?q=g%C3%B6%C3%A7&src=typed_query")
 time.sleep(4)
 
-
+driver.save_screenshot("ss.png")
 
 file = open("tweetler.csv","w",encoding="utf-8")
 writer = csv.writer(file)
 writer.writerow(["tweetler","begeni_sayisi","yorum_sayisi","retweet_sayisi"])
 a = 0
-while a < 50:
+while a < 3:
     print(a)
     lastHeight = driver.execute_script("return document.body.scrollHeight")
     i=0
@@ -36,9 +36,12 @@ while a < 50:
     source = driver.page_source
     soup = BeautifulSoup(source, "html.parser")
     tweets = soup.find_all("article",attrs={"data-testid":"tweet"})
-
+    
+#css-1dbjc4n r-18u37iz
     for i in tweets:
+
         try:
+            img = i.find
             text = i.find("div", attrs={"data-testid":"tweetText"}).text
             if text is None or text == ' ' or text == '':
                 text == 'Tweet Yazisi Yok'
