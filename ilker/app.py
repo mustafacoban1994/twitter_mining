@@ -1,7 +1,7 @@
 # #VERİ ÇEKELİM GALDAŞ
 # import snscrape.modules.twitter as sntwitter
 # import pandas as pd
-#
+#https://pypi.org/project/tweet-capture/
 #
 # # Creating list to append tweet data to
 # tweets_list = []
@@ -34,6 +34,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score, GridSearchCV, cross_validate
 from sklearn.preprocessing import LabelEncoder
+import os
 
 liste = []
 maxTweets = 2000
@@ -41,7 +42,7 @@ maxTweets = 2000
 
 def anyOfWords(keyword=''):
     for i, tweet in enumerate(
-            twitter.TwitterSearchScraper(keyword + ' since:2022-12-12 until:2022-12-13 lang:tr ').get_items()):
+            twitter.TwitterSearchScraper(keyword + ' since:2022-12-18 until:2022-12-19 lang:tr ').get_items()):
         if i > maxTweets:
             break
         print(i)
@@ -60,7 +61,11 @@ anyOfWords(
     '(#göçmen OR #göç OR #suriyeli OR #mülteci OR #afganli OR #afganlı OR #düzensizgöç OR #ümitözdağ OR #umitozdag OR #ümitozdag OR #zaferpartisi OR #uygur OR #doguturkistan OR #pakistanlı OR #pakistanli)')
 df = pd.DataFrame(liste,
                   columns=['Tarih/Zaman', 'KullanıcıAdı', 'İçerik', 'Url', 'Hashtag', 'BeğeniSayısı', 'PaylaşımSayısı'])
+
+
+
 df_=df.copy()
+
 df["İçerik"].drop_duplicates(inplace=True)
 df_
 
@@ -150,7 +155,7 @@ df.sort_values(by='BeğeniSayısı',ascending=False)
 df
 # Barplot
 
-tf[tf["tf"] > 100].plot.bar(x="Kelime", y="tf")
+tf[tf["tf"] > 20].plot.bar(x="Kelime", y="tf")
 from pylab import rcParams
 rcParams['figure.figsize'] = 20, 10
 plt.show()
@@ -190,3 +195,8 @@ sia = SentimentIntensityAnalyzer()
 sia.polarity_scores("The film was awesome")
 
 df.sort_values(by='Hashtag',ascending=False)
+
+
+df_
+
+
