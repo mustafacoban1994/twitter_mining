@@ -60,3 +60,5 @@ df = pd.DataFrame(liste,
 #bir tane daha kopyasını oluşturalım ki bu dataframe in ki yaptığımız yanlışlarda tekrar tekrar çekmek zorunda kalmayalım#####
 df_=df.copy()
 df_
+
+####şimdi daplikasyona düşen varsa yani yinelenen varsa onları kaldırsın
