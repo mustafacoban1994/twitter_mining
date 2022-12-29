@@ -35,6 +35,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score, GridSearchCV, cross_validate
 from sklearn.preprocessing import LabelEncoder
 import os
+import re
 
 liste = []
 maxTweets = 2000
