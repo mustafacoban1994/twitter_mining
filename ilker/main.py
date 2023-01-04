@@ -53,7 +53,7 @@ def anyOfWords(keyword=''):
         liste.append(
             [tweet.date, tweet.username, tweet.content, tweet.url, tweet.hashtags, tweet.likeCount, tweet.retweetCount])
 
-async def bokye:
+
     ####yazdığımız fonksiyonun içereceği kelimeleri tanımlıyoruz#####
     anyOfWords(
         '(göçmen OR göç OR suriyeli OR mülteci OR afganli OR afganlı OR düzensizgöç OR '
@@ -160,4 +160,3 @@ async def bokye:
     df['Url']
     df
 
-bokye();
