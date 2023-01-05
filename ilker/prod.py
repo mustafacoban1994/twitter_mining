@@ -107,12 +107,20 @@ df['İçerik']=df['İçerik'].str.lower()
 frekanslar=df['İçerik'].apply(lambda x: pd.value_counts(x.split(" "))).sum(axis=0).reset_index()
 frekanslar.columns=['Kelime', 'Sayı']
 frekanslar.sort_values('Sayı', ascending=False)
-sirali_frekanslar=frekanslar[frekanslar['Sayı']>=200]
+sirali_frekanslar = frekanslar[frekanslar['Sayı']>=100]
 sirali_frekanslar.sort_values('Sayı',ascending=False)
 sirali_frekanslar.plot.bar(x='Kelime', y='Sayı')
 plt.subplots_adjust(bottom=0.4, top=0.99)
 plt.yticks(color='orange')
 plt.show()
+
+#####Like Sayılarına Göre#####
+
+df_sort=df.sort_values("BeğeniSayısı",ascending=False)
+df_like_count=df_sort['Url'].iloc[0:50]
+import tweetshot
+tweetshot https://twitter.com/umitozdag/status/1610552231832477696"
+
 
 df['Tarih/Zaman'].sort_values(ascending=True)
 
