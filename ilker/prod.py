@@ -47,13 +47,11 @@ def anyOfWords(keyword=''):
         print(tweet.username)
         print(tweet.content)
         print(tweet.url)
+        print(tweet.hashtags)
         print(tweet.likeCount)
-        print(tweet)
-        print((tweet.place))
+        print(tweet.retweetCount)
         print('\n')
-
-
-    liste.append(
+        liste.append(
             [tweet.date, tweet.username, tweet.content, tweet.url, tweet.hashtags, tweet.likeCount, tweet.retweetCount])
 anyOfWords(
         '(göçmen OR göç OR suriyeli OR mülteci OR afganli OR afganlı OR düzensizgöç OR '
@@ -86,20 +84,15 @@ df_['İçerik'] = df_['İçerik'].str.replace('\d', '')  # sayıları \d ile bul
 import nltk
 nltk.download('stopwords')
 sw=stopwords.words('turkish')
+
 ##stopwords
 listes=pd.read_excel("ilker/turkish-stopwords.xlsx") #kendi oluşturduğum stopwordsu okutuyorum.
 listem=listes.values.tolist() #listeye çeviriyorum.
-for i in range(len(listem)):
-    print(i)
- #liste içinde ki listenin parçalanması
-sum(listem)
-
+listem=sum(listem,[])
 
 joinedlist=[*sw,*listem]#nltk dan gelen kelimelerle birleştirdim. Yeni bir liste kurdum.
-joinedlist.append('hav')
 df['İçerik'] = df['İçerik'].apply(lambda x: " ".join(x for x in str(x).split() if x not in joinedlist)) #listenin içindeki kelimelerden varsa çıkarıyorum. Edat bağlaç gibi gereksiz kelimeler.
 df_['İçerik'] = df_['İçerik'].apply(lambda x: " ".join(x for x in str(x).split() if x not in joinedlist))
-
 
 ####Rare Words#####Nadir Kelimeleri bulalım######
 #geçici bir dataframe oluşturdum
@@ -108,7 +101,7 @@ len(temp_df)
 sum(temp_df)
 drops = temp_df[temp_df <= 2] #frekans değeri 2 ve altında olanları yeni bir listeye attım.
 df['İçerik'] = df['İçerik'].apply(lambda x: " ".join(x for x in str(x).split() if x not in drops)) #sonrada bunları uçurdum.
-
+df['İçerik']=df['İçerik'].str.lower()
 #####Görselleştirme######
 ###BARPLOT####
 frekanslar=df['İçerik'].apply(lambda x: pd.value_counts(x.split(" "))).sum(axis=0).reset_index()
@@ -117,6 +110,8 @@ frekanslar.sort_values('Sayı', ascending=False)
 sirali_frekanslar=frekanslar[frekanslar['Sayı']>=200]
 sirali_frekanslar.sort_values('Sayı',ascending=False)
 sirali_frekanslar.plot.bar(x='Kelime', y='Sayı')
+plt.subplots_adjust(bottom=0.4, top=0.99)
+plt.yticks(color='orange')
 plt.show()
 
 df['Tarih/Zaman'].sort_values(ascending=True)
