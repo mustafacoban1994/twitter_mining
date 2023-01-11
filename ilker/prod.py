@@ -121,7 +121,6 @@ plt.yticks(color='orange')
 plt.savefig("D:\\twitter\\twitter_mining\\ilker\\Barplot")
 plt.show()
 
-###Screen Shot
 
 df_screenshot=df[df['KullanıcıAdı']!='behzatuygur'].sort_values('BeğeniSayısı',ascending=False)
 df_screenshot=df_screenshot[df_screenshot['BeğeniSayısı']>1000].sort_values('BeğeniSayısı',ascending=False)
@@ -178,4 +177,13 @@ plt.show()
 
 
 
+#####Like Sayılarına Göre#####
+
+df_sort=df.sort_values("BeğeniSayısı",ascending=False)
+df_like_count=df_sort['Url'].iloc[0:50]
+import tweetshot
+
+
+
+df['Tarih/Zaman'].sort_values(ascending=True)
 
