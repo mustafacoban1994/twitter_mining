@@ -171,7 +171,7 @@ text = " ".join(i for i in df['İçerik'])
 wordcloud = WordCloud().generate(text)
 plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
-plt.rcParams['figure.figsize'] = [100, 5]
+plt.rcParams['figure.figsize'] = [20, 5]
 plt.show()
 
 wordcloud = WordCloud(max_font_size=50,

@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a102b309-3927-4348-8c32-a85cedf2b73c" name="Changes" comment="Geceler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/@KaanSekbann_1608059080379174914_tweetcapture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/@jack_20_tweetcapture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/barplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ilker/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ilker/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ilker/prod.py" beforeDir="false" afterPath="$PROJECT_DIR$/ilker/prod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ilker/turkish-stopwords.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/ilker/turkish-stopwords.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordcloud.png" beforeDir="false" afterPath="$PROJECT_DIR$/wordcloud.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +79,14 @@
       <workItem from="1672645903388" duration="11586000" />
       <workItem from="1672669171889" duration="21992000" />
       <workItem from="1672821942564" duration="14724000" />
-      <workItem from="1672920976180" duration="6982000" />
+      <workItem from="1672920976180" duration="7228000" />
+      <workItem from="1672997681649" duration="3098000" />
+      <workItem from="1673247345070" duration="11325000" />
+      <workItem from="1673275232689" duration="2773000" />
+      <workItem from="1673330780139" duration="2619000" />
+      <workItem from="1673333528293" duration="8001000" />
+      <workItem from="1673342533428" duration="12388000" />
+      <workItem from="1673418102852" duration="7649000" />
     </task>
     <task id="LOCAL-00001" summary="Geceler">
       <created>1672646001463</created>
@@ -107,7 +118,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/twitter_mining$test.coverage" NAME="test Coverage Results" MODIFIED="1672430963003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ilker" />
-    <SUITE FILE_PATH="coverage/twitter_mining$prod.coverage" NAME="prod Coverage Results" MODIFIED="1672658799707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ilker" />
+    <SUITE FILE_PATH="coverage/twitter_mining$tweetshot.coverage" NAME="tweetshot Coverage Results" MODIFIED="1673424668129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mustafa" />
+    <SUITE FILE_PATH="coverage/twitter_mining$prod.coverage" NAME="prod Coverage Results" MODIFIED="1673424752179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ilker" />
     <SUITE FILE_PATH="coverage/twitter_mining$app.coverage" NAME="app Coverage Results" MODIFIED="1671086171964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ilker" />
     <SUITE FILE_PATH="coverage/twitter_mining$schedule.coverage" NAME="schedule Coverage Results" MODIFIED="1672430863040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ilker" />
   </component>
